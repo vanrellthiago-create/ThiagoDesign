@@ -1,0 +1,279 @@
+@use "variables" as *;  
+@use "mixins" as *;      
+
+.agenda-hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 50vh;
+  text-align: center;
+  color: #e8eef5;
+  margin-top: 40vh;
+
+  .agenda-text {
+    animation: fadeIn 2.2s ease-in-out forwards;
+    opacity: 0;
+
+    .agenda-title {
+        text-decoration-thickness:3.5px;
+        text-underline-offset:7px;
+        text-decoration: underline;
+        text-decoration-color:$brand-color;
+        margin-bottom: 10rem;
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 700;
+        color: #e8eef5;
+        text-shadow: 0 0 10px rgba(21, 189, 167, 0.4);
+        animation: caerLento 1.6s ease-out forwards;
+        opacity: 0;
+        transform: translateY(-120px);
+        font-family:$font-main;
+        letter-spacing: 1px;
+    }
+
+    .agenda-subtitle {
+      font-size: clamp(2.5rem, 5vw, 3rem);
+      font-weight: 400;
+      margin-top: 30vh;
+      margin-bottom: 10rem;
+      opacity: 0;
+      color: rgba(255, 255, 255, 0.85);
+      letter-spacing: 1px;
+      animation: fadeIn 2.2s ease-in-out 1s forwards;
+      text-decoration:underline;
+    }
+  }
+}
+
+/* ===== Animaciones ===== */
+
+@keyframes caerLento {
+  0% {
+    opacity: 0;
+    transform: translateY(-120px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(24px);
+  }
+
+  80% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+* { box-sizing: border-box; }
+body.agenda-page {
+  margin: 0;
+  background: $bg;
+  color: $text;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+// ===== Hero
+.hero {
+  &__title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    margin: 0;
+    text-shadow: 0 0 10px rgba($accent, .35);
+  }
+  &__subtitle {
+    margin: .5rem 0 1.25rem;
+    color: $muted;
+  }
+
+  .cal-toggle { display: none; }
+
+  .btn-cta {
+    @include button(rgba($accent, .12), $text);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,.25);
+  }
+}
+
+
+
+
+
+
+
+
+/* ===== Bloque general ===== */
+.grillas-section {
+  max-width: 800px;         // limita el ancho total
+  margin: 0 auto 80px;
+  padding: 0 1rem;
+  text-align: center;
+
+
+  h2.section-title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: 5rem;
+    margin-top: 10vh;
+    color: #e8eef5;
+    text-decoration: underline;
+    text-decoration-color: $brand-color;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 6px;
+  }
+
+  .row {
+    --bs-gutter-x: .75rem;  // reduce espacio horizontal
+    --bs-gutter-y: .75rem;  // reduce espacio vertical
+    justify-content: center;
+  }
+
+  .col-12 {
+    max-width: 250px;       // achica cada columna
+  }
+
+  .cell {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem 0;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 600;
+    color: #e8eef5;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      border-color: rgba(21, 189, 167, 0.6);
+    }
+
+    &--alt {
+      background: rgba(21, 189, 167, 0.1);
+      border: 1px solid rgba(21, 189, 167, 0.3);
+    }
+  }
+}
+
+/* ===== Responsividad extra ===== */
+@media (max-width: 768px) {
+  .grillas-section {
+    max-width: 95%;
+    .cell {
+      padding: 1rem 0;
+      font-size: 1rem;
+    }
+  }
+}
+
+
+
+
+
+
+
+// ===== Modal calendario (sin JS)
+.calendar-modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px);
+  transition: opacity .25s ease, transform .25s ease;
+  z-index: 50;
+
+  &__backdrop {
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,.55);
+  }
+
+  &__card {
+    position: relative;
+    width: min(520px, 92%);
+    background: $card;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: $radius;
+    box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    padding: clamp(16px, 4vw, 24px);
+
+    & > * { margin: 0 0 .75rem; }
+
+    .calendar-modal__title {
+      font-size: clamp(1.2rem, 2.6vw, 1.6rem);
+      text-shadow: 0 0 6px rgba($accent,.25);
+    }
+
+    .calendar-modal__date {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      color: $text;
+      padding: .7rem .9rem;
+      border-radius: 10px;
+    }
+
+    .calendar-modal__hint { color: $muted; }
+
+    .calendar-modal__close {
+      @include button(transparent, $accent);
+      display: inline-block;
+      margin-top: .25rem;
+      border-color: rgba($accent, .6);
+    }
+  }
+}
+
+// Toggle de modal con :checked
+.cal-toggle:checked ~ .calendar-modal {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+// ===== Títulos de sección
+.section-title {
+  font-size: clamp(1.25rem, 3.5vw, 1.6rem);
+  text-shadow: 0 0 6px rgba($accent,.25);
+}
+
+// ===== Celdas de las grillas
+.cell {
+  background: $card;
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: $radius;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+  transition: transform .2s ease, box-shadow .2s ease;
+
+  &:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(0,0,0,.3); }
+
+  &--alt {
+    background: linear-gradient(180deg, rgba($accent,.14), rgba(255,255,255,.03));
+    border-color: rgba($accent,.35);
+  }
+}
+
+// ===== Accesibilidad (menos movimiento)
+@media (prefers-reduced-motion: reduce) {
+  .calendar-modal,
+  .cell {
+    transition: none !important;
+  }
+}

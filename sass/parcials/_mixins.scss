@@ -1,0 +1,23 @@
+// ===== Mixins
+@mixin button($bgc, $fgc) {
+  appearance: none;
+  border: 1px solid rgba($fgc, .6);
+  background: $bgc;
+  color: $fgc;
+  padding: .7rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+
+  &:hover { transform: translateY(-1px); border-color: $fgc; }
+  &:active { transform: translateY(0); }
+}
+
+@mixin glow-line($color) {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+  text-shadow: 0 0 6px rgba($color, .45);
+}

@@ -1,0 +1,357 @@
+@use "mixins" as*;
+@use "variables" as*;
+@font-face{font-family:"interitalic";src:url("fuentes/Inter-Italic-VariableFont_opsz,wght.ttf");}
+
+
+/* ===== HERO ===== */
+.hero {
+  text-decoration-thickness:3.5px;
+  text-underline-offset:7px;
+  text-decoration: underline;
+  text-shadow: 0 0 5px rgba(21,189,167,.619);
+  position: relative;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  font-family: $font-main;
+  
+
+  .animacion-miportfolio {
+    position: relative;
+    display: block;
+    margin-top: 20rem;
+    margin-bottom: 15rem;
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 6rem);
+    font-weight: 800;
+    letter-spacing: 4px;
+    opacity: 0;
+    transform: translateY(-160px);
+    animation: caerLento 1.8s cubic-bezier(.22, .75, .24, 1.1) 0s 1 forwards;
+
+    &::after {
+      @include glow-line($brand-color);
+    }
+  }
+
+  .parrafo-portfolio{
+    display: block;
+    font-family: "interitalic";
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    justify-content: center;
+    max-width: 60ch;   
+    width: 90%;         
+    margin: 0 auto;   
+    margin-top: 20vw; 
+  }
+  }
+
+  /* === Flecha (botón simulando) === */
+  .arrow-label {
+    display: block;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 2.5rem;
+    color: #15bda7;
+    animation: bounce 1.5s infinite;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    .arrow {
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  /* Ocultamos el checkbox real */
+  .toggle-info {
+    display: none;
+
+    /* Cuando está activado (clic en la flecha) */
+    &:checked + .arrow-label .arrow {
+      transform: rotate(180deg);
+    }
+
+    /* Muestra el cuadro de texto */
+    &:checked ~ .info-box {
+      opacity: 1;
+      max-height: 220px;
+      transform: translateY(0);
+    }
+  }
+
+  /* === Cuadro desplegable === */
+  .info-box {
+    width: min(600px, 90%);
+    margin: 20px auto 0;
+    margin-bottom: 20rem;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(21,189,167,0.3);
+    box-shadow: 0 0 15px rgba(21,189,167,0.1);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transform: translateY(-10px);
+    transition: all 0.5s ease;
+  }
+
+
+/* === Animaciones === */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 8px rgba(21,189,167,0.3); }
+  to { text-shadow: 0 0 18px rgba(21,189,167,0.9); }
+}
+
+
+
+
+/* ===== Carrusel 3D ===== */
+
+.carousel-wrap {
+  position: relative;
+  width: min(30vw, 50vw);
+  aspect-ratio: 16 / 9;
+  margin-top: 20vw;
+  margin-bottom: 20vw;
+  margin:auto;
+  perspective: 1200px;
+  touch-action: pan-y;
+  overflow: visible;
+  z-index: 1;
+  justify-content: center;
+
+
+  .carousel3d {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    will-change: transform;
+
+    .imagen {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: min(60%, 520px);
+      aspect-ratio: 10 / 12;
+      transform: translate(-50%, -50%);
+      background-size: cover;
+      background-position: center;
+      border-radius: 16px;
+      box-shadow: $shadow-img, inset 0 0 0 2000px rgba(0, 0, 0, .15);
+      transition: box-shadow .2s ease, filter .2s ease;
+
+      &:hover {
+        box-shadow: 0 30px 70px rgba(0, 0, 0, .45),
+                    inset 0 0 0 2000px rgba(0, 0, 0, .10);
+        filter: brightness(1.05);
+      }
+    }
+  }
+}
+
+/* ===== Animaciones ===== */
+@keyframes brillo {
+  0% { box-shadow: 0 0 6px $brand-color, 0 0 20px $brand-color; }
+  100% { box-shadow: 0 0 20px $brand-color, 0 0 60px $brand-color, 0 0 100px $brand-color; }
+}
+
+@keyframes caerLento {
+  0% { opacity: 0; transform: translateY(-160px); }
+  60% { opacity: 1; transform: translateY(24px); }
+  80% { transform: translateY(-8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+
+/*==== h2 servicios ====*/
+
+.servicios-title{
+    text-align:center;
+    text-shadow:0 0 5px rgba(21,189,167,.619);
+    animation:glow 2s ease-in-out infinite alternate;
+    position:relative;
+    top:-30px;
+    font-size:5rem;
+    font-weight:bold;
+    margin-top: 30rem;
+    margin-bottom:100px;
+    text-decoration:underline;
+    text-decoration-thickness:3.5px;
+    text-underline-offset:7px
+}
+
+
+
+/* ===== Cards ===== */
+.cards-container {
+  display:grid;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 5rem;
+  width: min(1200px, 90%);
+  margin: 10vh auto;
+  margin-top: 150px;
+
+  .card {
+    --card-bg: #{$card-bg};
+    --card-accent: #{$card-accent};
+    --card-text: #{$card-text};
+    --card-shadow: #{$shadow-card};
+
+    width: 190px;
+    height: 254px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all .5s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    &__shine, &__glow, &__content, &__badge, &__image,
+    &__text, &__title, &__description, &__footer,
+    &__price, &__button {
+      transition: all .3s ease;
+    }
+
+    &__shine {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 40%,
+        rgba(255, 255, 255, 0.8) 50%,
+        rgba(255, 255, 255, 0) 60%
+      );
+      opacity: 0;
+    }
+
+    &__glow {
+      position: absolute;
+      inset: -10px;
+      background: radial-gradient(
+        circle at 50% 0%,
+        rgba(124, 58, 237, 0.3) 0%,
+        rgba(124, 58, 237, 0) 70%
+      );
+      opacity: 0;
+    }
+
+    &__content {
+      padding: 1.25em;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: .75em;
+      position: relative;
+      z-index: 2;
+    }
+
+    &__badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #10b981;
+      color: #fff;
+      padding: .25em .5em;
+      border-radius: 999px;
+      font-size: .7em;
+      font-weight: 600;
+      transform: scale(.8);
+      opacity: 0;
+    }
+
+    &__image {
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(45deg, #a78bfa, #8b5cf6);
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1) 0%, transparent 30%),
+          repeating-linear-gradient(45deg, rgba(139,92,246,0.1) 0 2px, transparent 2px 4px);
+        opacity: .5;
+      }
+    }
+
+    &__footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+
+    &__button {
+      width: 28px;
+      height: 28px;
+      background: var(--card-accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      cursor: pointer;
+      transform: scale(.9);
+    }
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      border-color: rgba(124, 58, 237, 0.2);
+
+      .card__shine { opacity: 1; animation: shine 3s infinite; }
+      .card__glow { opacity: 1; }
+      .card__badge { transform: scale(1); opacity: 1; z-index: 1; }
+      .card__image { transform: translateY(-5px) scale(1.03); }
+      .card__title, .card__price {
+        color: var(--card-accent);
+        transform: translateX(2px);
+      }
+      .card__description {
+        opacity: 1;
+        transform: translateX(2px);
+      }
+      .card__button {
+        transform: scale(1);
+        box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.2);
+
+        svg { animation: pulse 1.5s infinite; }
+      }
+    }
+  }
+}
+
+/* ===== Animaciones de las cards ===== */
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); } 
+}
