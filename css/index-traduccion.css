@@ -763,7 +763,9 @@ footer .footer-copy {
 .toggle-info:checked + .arrow-label .arrow {
   transform: rotate(180deg);
 }
-
+.toggle-info {
+  /* Muestra el cuadro de texto */
+}
 .toggle-info:checked ~ .info-box {
   opacity: 1;
   max-height: 220px;
@@ -1169,14 +1171,15 @@ body.agenda-page {
   text-underline-offset: 6px;
 }
 .grillas-section .row {
-  --bs-gutter-x: .75rem;
-  --bs-gutter-y: .75rem;
+  --bs-gutter-x: .55rem;
+  --bs-gutter-y: .55rem;
   justify-content: center;
 }
 .grillas-section .col-12 {
-  max-width: 250px;
+  max-width: 300px;
 }
 .grillas-section .cell {
+  display: inline-flexbox;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;

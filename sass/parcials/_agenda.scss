@@ -124,8 +124,8 @@ body.agenda-page {
   margin: 0 auto 80px;
   padding: 0 1rem;
   text-align: center;
-
-
+  
+ 
   h2.section-title {
     font-size: clamp(1.5rem, 4vw, 2rem);
     margin-bottom: 5rem;
@@ -138,16 +138,18 @@ body.agenda-page {
   }
 
   .row {
-    --bs-gutter-x: .75rem;  // reduce espacio horizontal
-    --bs-gutter-y: .75rem;  // reduce espacio vertical
+    --bs-gutter-x: .55rem;  // reduce espacio horizontal
+    --bs-gutter-y: .55rem;  // reduce espacio vertical
     justify-content: center;
+    
   }
 
   .col-12 {
-    max-width: 250px;       // achica cada columna
+    max-width: 300px;       // achica cada columna
   }
 
   .cell {
+    display:inline-flexbox;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
