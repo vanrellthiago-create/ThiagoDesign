@@ -846,6 +846,32 @@ footer .footer-copy {
   filter: brightness(1.05);
 }
 
+/* ===== Breakpoints ===== */
+/* 📱 Celulares (hasta 480px) */
+@media (max-width: 480px) {
+  .carousel-wrap {
+    max-width: 95vw;
+    aspect-ratio: 1/1;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  }
+  .carousel img {
+    border-radius: 12px;
+  }
+}
+/* 📲 Tablets (481px–1023px) */
+@media (min-width: 481px) and (max-width: 1023px) {
+  .carousel-wrap {
+    max-width: 90vw;
+    aspect-ratio: 4/3;
+  }
+}
+/* 💻 Monitores (1024px en adelante) */
+@media (min-width: 1024px) {
+  .carousel-wrap {
+    max-width: 1100px;
+    aspect-ratio: 16/9;
+  }
+}
 /* ===== Animaciones ===== */
 @keyframes brillo {
   0% {
@@ -897,6 +923,11 @@ footer .footer-copy {
   width: min(1200px, 90%);
   margin: 10vh auto;
   margin-top: 150px;
+}
+.cards-container .card .card__description {
+  color: black;
+  text-align: left;
+  font-size: 13.2px;
 }
 .cards-container .card {
   --card-bg: #ffffff;
@@ -953,7 +984,7 @@ footer .footer-copy {
 .cards-container .card__image {
   width: 100%;
   height: 100px;
-  background: linear-gradient(45deg, #a78bfa, #8b5cf6);
+  background: linear-gradient(45deg, #a78bfa, #c67f32);
   border-radius: 12px;
   overflow: hidden;
   position: relative;
@@ -1050,32 +1081,25 @@ footer .footer-copy {
   animation: fadeIn 2.2s ease-in-out forwards;
   opacity: 0;
 }
-.agenda-hero .agenda-text .agenda-title {
+.agenda-hero .agenda-text .agenda-subtitle {
+  font-size: clamp(2.5rem, 5vw, 3rem);
+  font-weight: 400;
+  text-align: center;
   text-decoration-thickness: 3.5px;
   text-underline-offset: 7px;
   text-decoration: underline;
   text-decoration-color: #ff00ff;
-  margin-bottom: 10rem;
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 2rem;
+  font-size: clamp(1.5rem, 5vw, 4rem);
   font-weight: 700;
-  color: #e8eef5;
+  color: #d6f6f8;
   text-shadow: 0 0 10px rgba(21, 189, 167, 0.4);
-  animation: caerLento 1.6s ease-out forwards;
   opacity: 0;
   transform: translateY(-120px);
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   letter-spacing: 1px;
-}
-.agenda-hero .agenda-text .agenda-subtitle {
-  font-size: clamp(2.5rem, 5vw, 3rem);
-  font-weight: 400;
-  margin-top: 30vh;
-  margin-bottom: 10rem;
-  opacity: 0;
-  color: rgba(255, 255, 255, 0.85);
-  letter-spacing: 1px;
+  margin-top: -9rem;
   animation: fadeIn 2.2s ease-in-out 1s forwards;
-  text-decoration: underline;
 }
 
 /* ===== Animaciones ===== */
@@ -1209,82 +1233,24 @@ body.agenda-page {
     font-size: 1rem;
   }
 }
-.calendar-modal {
-  position: fixed;
-  inset: 0;
-  display: grid;
-  place-items: center;
+.agenda-title {
+  text-align: center;
+  text-decoration-thickness: 3.5px;
+  text-underline-offset: 7px;
+  text-decoration: underline;
+  text-decoration-color: #ff00ff;
+  margin-bottom: 10rem;
+  font-size: clamp(1.5rem, 5vw, 4rem);
+  font-weight: 700;
+  color: #c2ebee;
+  text-shadow: 0 0 10px rgba(21, 189, 167, 0.4);
+  animation: caerLento 1.6s ease-out forwards;
   opacity: 0;
-  pointer-events: none;
-  transform: translateY(6px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  z-index: 50;
-}
-.calendar-modal__backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-}
-.calendar-modal__card {
-  position: relative;
-  width: min(520px, 92%);
-  background: #151a21;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-  padding: clamp(16px, 4vw, 24px);
-}
-.calendar-modal__card > * {
-  margin: 0 0 0.75rem;
-}
-.calendar-modal__card .calendar-modal__title {
-  font-size: clamp(1.2rem, 2.6vw, 1.6rem);
-  text-shadow: 0 0 6px rgba(21, 189, 167, 0.25);
-}
-.calendar-modal__card .calendar-modal__date {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #e8eef5;
-  padding: 0.7rem 0.9rem;
-  border-radius: 10px;
-}
-.calendar-modal__card .calendar-modal__hint {
-  color: rgba(232, 238, 245, 0.72);
-}
-.calendar-modal__card .calendar-modal__close {
-  appearance: none;
-  border: 1px solid rgba(21, 189, 167, 0.6);
-  background: transparent;
-  color: #15bda7;
-  padding: 0.7rem 1.2rem;
-  border-radius: 999px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-.calendar-modal__card .calendar-modal__close:hover {
-  transform: translateY(-1px);
-  border-color: #15bda7;
-}
-.calendar-modal__card .calendar-modal__close:active {
-  transform: translateY(0);
-}
-.calendar-modal__card .calendar-modal__close {
-  display: inline-block;
-  margin-top: 0.25rem;
-  border-color: rgba(21, 189, 167, 0.6);
-}
-
-.cal-toggle:checked ~ .calendar-modal {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-.section-title {
-  font-size: clamp(1.25rem, 3.5vw, 1.6rem);
-  text-shadow: 0 0 6px rgba(21, 189, 167, 0.25);
+  transform: translateY(-120px);
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  letter-spacing: 1px;
+  margin-top: 20rem;
+  margin-bottom: 2rem;
 }
 
 .cell {
@@ -1309,6 +1275,71 @@ body.agenda-page {
   .calendar-modal,
   .cell {
     transition: none !important;
+  }
+}
+.reserva {
+  max-width: 1080px;
+  margin-inline: auto;
+  padding: clamp(1rem, 3vw, 2rem);
+  color: #ffffff;
+  text-align: center;
+}
+.reserva h4 {
+  color: #ffffff;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  line-height: 1.15;
+  font-weight: 800;
+  margin: 0 0 0.6rem;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  letter-spacing: 0.5px;
+}
+.reserva p {
+  font-size: 1.2rem;
+  line-height: 2;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0.7px;
+  margin: 0;
+  padding: 0 10px;
+  font-family: "interitalic";
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+}
+.reserva {
+  /* Calendly embed */
+}
+.reserva .calendly-inline-widget {
+  height: 820px;
+  width: 100%;
+  min-width: 320px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  background: transparent;
+  /* el iframe lo inyecta Calendly */
+}
+.reserva .calendly-inline-widget iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border: 0;
+  display: block;
+}
+.reserva {
+  /* Breakpoints de altura */
+}
+@media (min-width: 480px) {
+  .reserva .reserva .calendly-inline-widget {
+    height: 880px;
+  }
+}
+@media (min-width: 768px) {
+  .reserva .reserva .calendly-inline-widget {
+    height: 920px;
+  }
+}
+@media (min-width: 1024px) {
+  .reserva .reserva .calendly-inline-widget {
+    height: 760px;
   }
 }
 
