@@ -162,18 +162,11 @@ body.agenda-page {
       border: 1px solid rgba(21, 189, 167, 0.3);
     }
   }
+  @media (min-width: 480px){ .reserva .calendly-inline-widget{ height: 880px; } }
+  @media (min-width: 768px){ .reserva .calendly-inline-widget{ height: 920px; } }
+  @media (min-width: 1024px){.reserva .calendly-inline-widget{ height: 760px; } }
 }
 
-/* ===== Responsividad extra ===== */
-@media (max-width: 768px) {
-  .grillas-section {
-    max-width: 95%;
-    .cell {
-      padding: 1rem 0;
-      font-size: 1rem;
-    }
-  }
-}
 
 
 .agenda-title { 

@@ -167,34 +167,41 @@
 
 /* ===== Breakpoints ===== */
 
-/* 📱 Celulares (hasta 480px) */
-@media (max-width: 480px) {
-  .carousel-wrap {
-    max-width: 95vw;
-    aspect-ratio: 1 / 1;              // formato cuadrado
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  }
+/* Breakpoints de altura */
+@media (min-width: 480px){ .reserva .calendly-inline-widget{ height: 880px; } }
+@media (min-width: 768px){ .reserva .calendly-inline-widget{ height: 920px; } }
+@media (min-width: 1024px){.reserva .calendly-inline-widget{ height: 760px; } }
 
-  .carousel img {
-    border-radius: 12px;
-  }
-}
 
-/* 📲 Tablets (481px–1023px) */
-@media (min-width: 481px) and (max-width: 1023px) {
-  .carousel-wrap {
-    max-width: 90vw;
-    aspect-ratio: 4 / 3;
-  }
-}
 
-/* 💻 Monitores (1024px en adelante) */
-@media (min-width: 1024px) {
-  .carousel-wrap {
-    max-width: 1100px;
-    aspect-ratio: 16 / 9;
-  }
-}
+// /* 📱 Celulares (hasta 480px) */
+// @media (max-width: 480px) {
+//   .carousel-wrap {
+//     max-width: 95vw;
+//     aspect-ratio: 1 / 1;              // formato cuadrado
+//     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+//   }
+
+//   .carousel img {
+//     border-radius: 12px;
+//   }
+// }
+
+// /* 📲 Tablets (481px–1023px) */
+// @media (min-width: 481px) and (max-width: 1023px) {
+//   .carousel-wrap {
+//     max-width: 90vw;
+//     aspect-ratio: 4 / 3;
+//   }
+// }
+
+// /* 💻 Monitores (1024px en adelante) */
+// @media (min-width: 1024px) {
+//   .carousel-wrap {
+//     max-width: 1100px;
+//     aspect-ratio: 16 / 9;
+//   }
+// }
 
 /* ===== Animaciones ===== */
 @keyframes brillo {

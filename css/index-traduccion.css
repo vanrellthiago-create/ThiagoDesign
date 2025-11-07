@@ -448,6 +448,21 @@ header:hover .menu-icon {
   text-decoration-thickness: 3.5px;
   text-underline-offset: 7px;
 }
+@media (min-width: 480px) {
+  .cards-index .subtitulo-sobre-mi .reserva .calendly-inline-widget {
+    height: 880px;
+  }
+}
+@media (min-width: 768px) {
+  .cards-index .subtitulo-sobre-mi .reserva .calendly-inline-widget {
+    height: 920px;
+  }
+}
+@media (min-width: 1024px) {
+  .cards-index .subtitulo-sobre-mi .reserva .calendly-inline-widget {
+    height: 760px;
+  }
+}
 .cards-index .card-index {
   border-radius: 16px;
   border: 2px solid rgba(207, 10, 69, 0.7137254902);
@@ -486,6 +501,22 @@ header:hover .menu-icon {
   text-decoration: underline;
   text-decoration-thickness: 3.5px;
   text-underline-offset: 7px;
+  /* Breakpoints de altura */
+}
+@media (min-width: 480px) {
+  .cards-index .sub-metodologia .reserva .calendly-inline-widget {
+    height: 880px;
+  }
+}
+@media (min-width: 768px) {
+  .cards-index .sub-metodologia .reserva .calendly-inline-widget {
+    height: 920px;
+  }
+}
+@media (min-width: 1024px) {
+  .cards-index .sub-metodologia .reserva .calendly-inline-widget {
+    height: 760px;
+  }
 }
 .cards-index .Metodologia {
   font-size: 1.2rem;
@@ -847,29 +878,20 @@ footer .footer-copy {
 }
 
 /* ===== Breakpoints ===== */
-/* 📱 Celulares (hasta 480px) */
-@media (max-width: 480px) {
-  .carousel-wrap {
-    max-width: 95vw;
-    aspect-ratio: 1/1;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  }
-  .carousel img {
-    border-radius: 12px;
+/* Breakpoints de altura */
+@media (min-width: 480px) {
+  .reserva .calendly-inline-widget {
+    height: 880px;
   }
 }
-/* 📲 Tablets (481px–1023px) */
-@media (min-width: 481px) and (max-width: 1023px) {
-  .carousel-wrap {
-    max-width: 90vw;
-    aspect-ratio: 4/3;
+@media (min-width: 768px) {
+  .reserva .calendly-inline-widget {
+    height: 920px;
   }
 }
-/* 💻 Monitores (1024px en adelante) */
 @media (min-width: 1024px) {
-  .carousel-wrap {
-    max-width: 1100px;
-    aspect-ratio: 16/9;
+  .reserva .calendly-inline-widget {
+    height: 760px;
   }
 }
 /* ===== Animaciones ===== */
@@ -1222,17 +1244,22 @@ body.agenda-page {
   background: rgba(21, 189, 167, 0.1);
   border: 1px solid rgba(21, 189, 167, 0.3);
 }
-
-/* ===== Responsividad extra ===== */
-@media (max-width: 768px) {
-  .grillas-section {
-    max-width: 95%;
-  }
-  .grillas-section .cell {
-    padding: 1rem 0;
-    font-size: 1rem;
+@media (min-width: 480px) {
+  .grillas-section .reserva .calendly-inline-widget {
+    height: 880px;
   }
 }
+@media (min-width: 768px) {
+  .grillas-section .reserva .calendly-inline-widget {
+    height: 920px;
+  }
+}
+@media (min-width: 1024px) {
+  .grillas-section .reserva .calendly-inline-widget {
+    height: 760px;
+  }
+}
+
 .agenda-title {
   text-align: center;
   text-decoration-thickness: 3.5px;
